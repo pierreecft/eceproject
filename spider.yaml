@@ -1,0 +1,12 @@
+no_comments: true
+package: res
+
+groups:
+  - path: assets/vector_drawables/
+    class_name: AppVectorialImages
+    package: assets
+    types: [ .svg, .png, .jpg ]
+  - path: assets/images/
+    class_name: AppImages
+    package: assets
+    types: [ .svg, .png, .jpg ]
