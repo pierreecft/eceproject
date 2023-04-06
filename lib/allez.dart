@@ -110,7 +110,7 @@ class _AllezPageState extends State<AllezPage> {
           ),
         ],
         bottom: PreferredSize(
-          preferredSize: Size.fromHeight(kToolbarHeight + 275),
+          preferredSize: Size.fromHeight(kToolbarHeight + 300),
           child: Column(
             children: [
               SizedBox(height: 20),
@@ -209,14 +209,15 @@ class _AllezPageState extends State<AllezPage> {
               Align(
                 alignment: Alignment.centerLeft,
                 child: Padding(
-                  padding: EdgeInsets.only(left: 15, bottom: 20, right: 20, top: 20),
+                  padding: EdgeInsets.only(left: 15, bottom: 10, right: 20, top: 20),
                   child: Text(
                     'Les meilleures ventes',
                     style: TextStyle(
                       decoration: TextDecoration.underline,
                       fontWeight: FontWeight.w400,
-                      fontSize: 20,
+                      fontSize: 18,
                       color: Colors.white,
+                      fontFamily: 'Proxima Nova',
                     ),
                   ),
                 ),
@@ -252,6 +253,7 @@ class _AllezPageState extends State<AllezPage> {
                                   image: DecorationImage(
                                     image: NetworkImage(gameData['background']),
                                     fit: BoxFit.cover,
+
                                   ),
                                 ),
                                 child: Row(
@@ -261,69 +263,89 @@ class _AllezPageState extends State<AllezPage> {
                                       width: 80,
                                       height: 80,
                                     ),
-                                    Flexible(
-                                      flex: 20,
-                                      child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          Padding(
-                                            padding: EdgeInsets.only(right: 48.0),
-                                            child: Text(
-                                              appName,
-                                              style: TextStyle(
-                                                fontSize: 15,
-                                                color: Colors.white,
-                                              ),
+                                    Column(
+
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Container(
+                                          width: MediaQuery.of(context).size.width*0.4,
+                                          child:Text(
+                                            appName,
+                                            style: TextStyle(
+                                              fontSize: 15,
+                                              color: Colors.white,
+                                                fontFamily: 'Proxima Nova',
                                             ),
+
+                                            // permet de passer à la ligne
+
                                           ),
-                                          Padding(
+                                        ),
+                                        Container(
+                                          width: MediaQuery.of(context).size.width*0.4,
+                                          child: Padding(
                                             padding: EdgeInsets.only(top: 3.0, bottom: 8.0),
                                             child: Text(
-                                              gameData['developers'].split(' ').take(2).join(' '),
+                                              gameData['developers'].split(' ').take(6).join(' '),
                                               style: TextStyle(
                                                 fontSize: 12,
                                                 color: Colors.white,
+                                                fontFamily: 'Proxima Nova',
                                               ),
                                             ),
                                           ),
-                                          Text(
-                                            'Prix : ${gameData['price']}',
-                                            style: TextStyle(
-                                              fontSize: 12,
-                                              decoration: TextDecoration.underline,
-                                              color: Colors.white,
-                                            ),
+                                        ),
+
+
+                                        Text(
+                                          'Prix : ${gameData['price']}',
+                                          style: TextStyle(
+                                            fontSize: 12,
+                                            decoration: TextDecoration.underline,
+                                            color: Colors.white,
+                                            fontFamily: 'Proxima Nova',
                                           ),
-                                        ],
-                                      ),
+                                        ),
+                                      ],
                                     ),
                                     const Spacer(),
-                                    ElevatedButton(
-                                      onPressed: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) => DescriptionPage(gameId: appIdbis),
+                                    Container(
+                                      padding: EdgeInsets.only(left: 26),
+                                      child:ElevatedButton(
+                                        onPressed: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  DescriptionPage(gameId: appIdbis),
+                                            ),
+                                          );
+                                        },
+                                        child: Padding(
+                                          padding:
+                                          const EdgeInsets.symmetric(vertical: 34),
+                                          child: Text(
+                                            'En savoir \n plus',
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              fontFamily: 'Proxima Nova',
+
+                                            ),
+
                                           ),
-                                        );
-                                      },
-                                      child: Padding(
-                                        padding: const EdgeInsets.symmetric(vertical: 34),
-                                        child: Text(
-                                          'En savoir \n plus',
-                                          textAlign: TextAlign.center,
+                                        ),
+                                        style: ButtonStyle(
+                                          backgroundColor:
+                                          MaterialStateProperty.all<Color>(
+                                            AppColors.buttonColor,
+                                          ),
                                         ),
                                       ),
-                                      style: ButtonStyle(
-                                        backgroundColor: MaterialStateProperty.all<Color>(
-                                          AppColors.buttonColor,
-                                        ),
-                                      ),
-                                    ),
+                                    )
+
                                   ],
                                 ),
                               );
-
                             } else if (gameDataSnapshot.hasError) {
                               return Text('Une erreur est survenue : ${gameDataSnapshot.error}');
                             } else {

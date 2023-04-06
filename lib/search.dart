@@ -149,6 +149,7 @@ class _SearchPageState extends State<SearchPage> {
               fontWeight: FontWeight.w400,
               fontSize: 19,
               color: Colors.white,
+              fontFamily: 'Proxima Nova',
             ),
           ),
         ),
@@ -191,33 +192,44 @@ class _SearchPageState extends State<SearchPage> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Padding(
-                            padding: EdgeInsets.only(right: 0, top: 20),
-                            child: Text(
-                              game.name.split(' ').take(5).join(' '),
+                          Container(
+                            width: MediaQuery.of(context).size.width*0.4,
+                            padding: EdgeInsets.only(top:20),
+                            child:
+
+                            Text(
+                              game.name.split(' ').take(6).join(' '),
                               style: TextStyle(
                                 fontSize: 15,
                                 color: Colors.white,
+                                fontFamily: 'Proxima Nova',
                               ),
                             ),
                           ),
-                          Padding(
-                            padding:
-                            EdgeInsets.only(top: 3.0, bottom: 6.0),
-                            child: Text(
-                              "Nom de l'éditeur",
-                              style: TextStyle(
-                                fontSize: 12,
-                                color: Colors.white,
+                          Container(
+                            width: MediaQuery.of(context).size.width*0.4,
+                            child:
+                            Padding(
+                              padding:
+                              EdgeInsets.only(top: 3.0, bottom: 6.0),
+                              child: Text(
+                                "Nom de l'éditeur",
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: Colors.white,
+                                  fontFamily: 'Proxima Nova',
+                                ),
                               ),
                             ),
                           ),
+
                           Text(
                             'Prix : 10,00€',
                             style: TextStyle(
                               fontSize: 12,
                               decoration: TextDecoration.underline,
                               color: Colors.white,
+                              fontFamily: 'Proxima Nova',
                             ),
                           ),
                         ],
@@ -238,6 +250,9 @@ class _SearchPageState extends State<SearchPage> {
                         const EdgeInsets.symmetric(vertical: 34),
                         child: Text(
                           'En savoir \n plus',
+                          style: TextStyle(
+                            fontFamily: 'Proxima Nova',
+                          ),
                           textAlign: TextAlign.center,
                         ),
                       ),

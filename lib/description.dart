@@ -103,6 +103,8 @@ class _DescriptionPageState extends State<DescriptionPage> {
           style: TextStyle(
             fontSize: 18,
             color: Colors.white,
+            fontFamily: 'Google Sans',
+            fontWeight: FontWeight.bold,
           ),
         ),
         backgroundColor: AppColors.primaryColor,
@@ -157,32 +159,41 @@ class _DescriptionPageState extends State<DescriptionPage> {
                 ),
               ),
               Positioned(
-                bottom: 100,
+                bottom: 96,
                 left: 130,
-                child: Wrap(
-                  children: [
+                child: Container(
+                  width: MediaQuery.of(context).size.width*0.6,
+                  child:
                     Text(
-                      _gameName.split(' ').take(2).join(' '), // limit to 3 words
+                      _gameName,
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 20,
+                        fontSize: 18,
+                        fontFamily: 'Proxima Nova',
                       ),
-                      overflow: TextOverflow.ellipsis,
+
                     ),
-                  ],
+
                 ),
               ),
 
               Positioned(
                 bottom: 75,
                 left: 130,
-                child: Text(
-                              _developers.split(' ').take(3).join(' '),
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
+
+                child: Container(
+                padding: EdgeInsets.only(top:10),
+    width: MediaQuery.of(context).size.width*0.6,
+                  child: Text(
+                    _developers.split(' ').take(6).join(' '),
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 14,
+                      fontFamily: 'Proxima Nova',
+                    ),
                   ),
-                ),
+    )
+
               ),
               Positioned(
                 bottom: 50,
@@ -192,7 +203,8 @@ class _DescriptionPageState extends State<DescriptionPage> {
                   style: TextStyle(
                     color: Colors.white,
                     decoration: TextDecoration.underline,
-                    fontSize: 16,
+                    fontSize: 14,
+                    fontFamily: 'Proxima Nova',
                   ),
                 ),
               ),
@@ -230,7 +242,10 @@ class _DescriptionPageState extends State<DescriptionPage> {
                   ),
                   child: Padding(
                   padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-                  child: Text('DESCRIPTION'),
+                  child: Text('DESCRIPTION',
+                  style: TextStyle(
+                    fontFamily: 'Google Sans',
+                  ),),
                     ),
                     ),
                     ),
@@ -270,7 +285,7 @@ class _DescriptionPageState extends State<DescriptionPage> {
                 margin: EdgeInsets.only(top: 15.0),
                 child: Text(
                   _description,
-                  style: TextStyle(fontSize: 18, color: Colors.white),
+                  style: TextStyle(fontSize: 18, color: Colors.white, fontFamily: 'Proxima Nova'),
                 ),
               )
             else
@@ -297,6 +312,7 @@ class _DescriptionPageState extends State<DescriptionPage> {
                                       color: Colors.white,
                                       fontSize: 18,
                                       decoration: TextDecoration.underline,
+                                      fontFamily: 'Proxima Nova',
                                     ),
                                   ),
                                   SizedBox(width: 80),
@@ -314,6 +330,7 @@ class _DescriptionPageState extends State<DescriptionPage> {
                             style: TextStyle(
                               fontSize: 16,
                               color: Colors.white,
+                              fontFamily: 'Proxima Nova',
                             ),
                           ),
                         ),
