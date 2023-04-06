@@ -15,17 +15,17 @@ class AppColors {
 
 
 
-class DescriptionPage extends StatefulWidget {
+class TitanPage extends StatefulWidget {
   final int gameId;
 
 
-  const DescriptionPage({Key? key, required this.gameId}) : super(key: key);
+  const TitanPage({Key? key, required this.gameId}) : super(key: key);
 
   @override
-  _DescriptionPageState createState() => _DescriptionPageState();
+  _TitanPageState createState() => _TitanPageState();
 }
 
-class _DescriptionPageState extends State<DescriptionPage> {
+class _TitanPageState extends State<TitanPage> {
   bool _liked = false;
   bool _whishlist = false;
   bool _showDescription = true;
@@ -141,11 +141,11 @@ class _DescriptionPageState extends State<DescriptionPage> {
                 margin: EdgeInsets.only(top: 170, right: 20, left: 20),
                 alignment: Alignment.bottomCenter,
 
-                  child: Image.network(
-                    _darkBackground,
+                child: Image.network(
+                  _darkBackground,
 
-                  ),
                 ),
+              ),
 
               Positioned(
                 bottom: 37,
@@ -177,7 +177,7 @@ class _DescriptionPageState extends State<DescriptionPage> {
                 bottom: 75,
                 left: 130,
                 child: Text(
-                              _developers.split(' ').take(3).join(' '),
+                  _developers.split(' ').take(3).join(' '),
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 16,
@@ -198,149 +198,149 @@ class _DescriptionPageState extends State<DescriptionPage> {
               ),
             ],
           ),
-        Container(
-        margin: EdgeInsets.all(16),
-          child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-            children: [
-              Expanded(
-                child: ElevatedButton(
-                onPressed: () {
-                setState(() {
-                _showDescription = true;
-                });
-                },
-                  style: ButtonStyle(
-                  backgroundColor: _showDescription
-                  ? MaterialStateProperty.all<Color>(
-                  AppColors.buttonColor)
-                      : MaterialStateProperty.all<Color>(
-                  Colors.transparent),
-                  side: MaterialStateProperty.all<BorderSide>(
-                  BorderSide(
-                  color: AppColors.buttonColor,
-                  width: 1,
-                  ),
-                  ),
-                  padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-                  EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                  ),
-                  ),
-                  child: Padding(
-                  padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-                  child: Text('DESCRIPTION'),
-                    ),
-                    ),
-                    ),
-                Expanded(
-                  child: ElevatedButton(
-                  onPressed: () {
-                  setState(() {
-                  _showDescription = false;
-                  });
-                  },
-                  style: ButtonStyle(
-                  backgroundColor: _showDescription
-                  ? MaterialStateProperty.all<Color>(
-                  Colors.transparent)
-                      : MaterialStateProperty.all<Color>(
-                  AppColors.buttonColor),
-                  side: MaterialStateProperty.all<BorderSide>(
-                    BorderSide(
-                    color: AppColors.buttonColor,
-                    width: 2,
-                    ),
-                  ),
-                  padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-                  EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                  ),
-                  ),
-                    child: Padding(
-                    padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-                    child: Text('AVIS'),
-                  ),
-                  ),
-                  ),
-                  ],
-                  ),
-            if (_showDescription)
-              Container(
-                margin: EdgeInsets.only(top: 15.0),
-                child: Text(
-                  _description,
-                  style: TextStyle(fontSize: 18, color: Colors.white),
-                ),
-              )
-            else
-              SizedBox(
-                height: 300,
-                child: ListView.builder(
-                  itemCount: 7,
-                  itemBuilder: (context, index) => Container(
-                    color: AppColors.searchColor,
-                    margin: EdgeInsets.only(top: 16),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Container(
-                              margin: EdgeInsets.only(left: 28, top: 16, right: 16),
-                              child: Row(
-                                children: [
-                                  Text(
-                                    "Nom d'utilisateur",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 18,
-                                      decoration: TextDecoration.underline,
-                                    ),
-                                  ),
-                                  SizedBox(width: 80),
-                                  ...List.generate(5, (index) => Icon(Icons.star, color: Colors.orange, size: 16,)),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: 10),
-                        Container(
-                          margin: EdgeInsets.only(right: 35.0, bottom: 16.0, left: 28.0),
-                          child: Text(
-                            'Bacon ipsum dolor amet rump doner brisket corned beef tri-tip. Burgdoggen t-bone leberkas, tri-tip bacon beef',
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.white,
+          Container(
+            margin: EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Expanded(
+                      child: ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            _showDescription = true;
+                          });
+                        },
+                        style: ButtonStyle(
+                          backgroundColor: _showDescription
+                              ? MaterialStateProperty.all<Color>(
+                              AppColors.buttonColor)
+                              : MaterialStateProperty.all<Color>(
+                              Colors.transparent),
+                          side: MaterialStateProperty.all<BorderSide>(
+                            BorderSide(
+                              color: AppColors.buttonColor,
+                              width: 1,
                             ),
                           ),
+                          padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+                            EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                          ),
                         ),
-                        // Ajoutez ici votre code pour afficher les avis
-                      ],
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                          child: Text('DESCRIPTION'),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            _showDescription = false;
+                          });
+                        },
+                        style: ButtonStyle(
+                          backgroundColor: _showDescription
+                              ? MaterialStateProperty.all<Color>(
+                              Colors.transparent)
+                              : MaterialStateProperty.all<Color>(
+                              AppColors.buttonColor),
+                          side: MaterialStateProperty.all<BorderSide>(
+                            BorderSide(
+                              color: AppColors.buttonColor,
+                              width: 2,
+                            ),
+                          ),
+                          padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+                            EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                          ),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                          child: Text('AVIS'),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                if (_showDescription)
+                  Container(
+                    margin: EdgeInsets.only(top: 15.0),
+                    child: Text(
+                      _description,
+                      style: TextStyle(fontSize: 18, color: Colors.white),
+                    ),
+                  )
+                else
+                  SizedBox(
+                    height: 300,
+                    child: ListView.builder(
+                      itemCount: 7,
+                      itemBuilder: (context, index) => Container(
+                        color: AppColors.searchColor,
+                        margin: EdgeInsets.only(top: 16),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.only(left: 28, top: 16, right: 16),
+                                  child: Row(
+                                    children: [
+                                      Text(
+                                        "Nom d'utilisateur",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 18,
+                                          decoration: TextDecoration.underline,
+                                        ),
+                                      ),
+                                      SizedBox(width: 80),
+                                      ...List.generate(5, (index) => Icon(Icons.star, color: Colors.orange, size: 16,)),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 10),
+                            Container(
+                              margin: EdgeInsets.only(right: 35.0, bottom: 16.0, left: 28.0),
+                              child: Text(
+                                'Bacon ipsum dolor amet rump doner brisket corned beef tri-tip. Burgdoggen t-bone leberkas, tri-tip bacon beef',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                            // Ajoutez ici votre code pour afficher les avis
+                          ],
+                        ),
+                      ),
                     ),
                   ),
-                ),
-              ),
 
 
 
 
 
-          ],
-                  ),
+              ],
+            ),
 
 
-        ),
-
+          ),
 
 
 
 
 
 
-    ],
+
+        ],
       ),
 
 

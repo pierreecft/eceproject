@@ -75,6 +75,8 @@ class _SearchPageState extends State<SearchPage> {
     }
   }
 
+
+
   void _toggleLoading(bool value) {
     setState(() {
       _isLoading = value;

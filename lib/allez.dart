@@ -7,6 +7,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'likes.dart';
 import 'whishlist.dart';
 import 'description.dart';
+import 'titan.dart';
 
 class AppColors {
   static const Color primaryColor = Color(0xFF1A2025);
@@ -144,7 +145,7 @@ class _AllezPageState extends State<AllezPage> {
               Stack(
                 children: [
                   Image.asset(
-                    'assets/images/jeu3.png',
+                    'assets/images/jordan.jpg',
                     width: MediaQuery.of(context).size.width,
                     fit: BoxFit.cover,
                   ),
@@ -152,7 +153,7 @@ class _AllezPageState extends State<AllezPage> {
                     bottom: 8,
                     right: 0,
                     child: Image.asset(
-                      'assets/images/jeu1.png',
+                      'assets/images/cole.jpeg',
                       width: 130,
                       height: 130,
                     ),
@@ -161,7 +162,7 @@ class _AllezPageState extends State<AllezPage> {
                     left: 12,
                     top: 60,
                     child: Text(
-                      'Titan Fall 2\nUltimate Edition',
+                      'NBA 2K23',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 18.79,
@@ -174,10 +175,10 @@ class _AllezPageState extends State<AllezPage> {
                     left: 12,
                     top: 106,
                     child: Text(
-                      "L'espace colonisé par les humains a fini par \nse diviser en deux grandes zones d'influence : \nles mondes du Noyau et la Frontière.",
+                      "Build your own dynasty in MyGM, or guide\nthe NBA in a new direction with MyLEAGUE. \nTake on NBA or WNBA teams in PLAY NOW \nand feel true-to-life gameplay.",
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 11.74,
+                        fontSize: 13,
                         fontFamily: 'ProximaNova',
                       ),
                       // limite le nombre de lignes à 2
@@ -187,7 +188,15 @@ class _AllezPageState extends State<AllezPage> {
                     left: 12,
                     bottom: 6,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                            builder: (context) =>
+                        TitanPage(gameId: 1919590)
+                        ),
+                        );
+                      },
                       child: Text('En savoir plus'),
                       style: ElevatedButton.styleFrom(
                         primary: AppColors.buttonColor,
@@ -243,7 +252,6 @@ class _AllezPageState extends State<AllezPage> {
                                   image: DecorationImage(
                                     image: NetworkImage(gameData['background']),
                                     fit: BoxFit.cover,
-
                                   ),
                                 ),
                                 child: Row(
@@ -253,35 +261,41 @@ class _AllezPageState extends State<AllezPage> {
                                       width: 80,
                                       height: 80,
                                     ),
-                                    Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          appName.split(' ').take(2).join(' '),
-                                          style: TextStyle(
-                                            fontSize: 15,
-                                            color: Colors.white,
+                                    Flexible(
+                                      flex: 20,
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Padding(
+                                            padding: EdgeInsets.only(right: 48.0),
+                                            child: Text(
+                                              appName,
+                                              style: TextStyle(
+                                                fontSize: 15,
+                                                color: Colors.white,
+                                              ),
+                                            ),
                                           ),
-                                        ),
-                                        Padding(
-                                          padding: EdgeInsets.only(top: 3.0, bottom: 8.0),
-                                          child: Text(
-                                            gameData['developers'].split(' ').take(2).join(' '),
+                                          Padding(
+                                            padding: EdgeInsets.only(top: 3.0, bottom: 8.0),
+                                            child: Text(
+                                              gameData['developers'].split(' ').take(2).join(' '),
+                                              style: TextStyle(
+                                                fontSize: 12,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                          ),
+                                          Text(
+                                            'Prix : ${gameData['price']}',
                                             style: TextStyle(
                                               fontSize: 12,
+                                              decoration: TextDecoration.underline,
                                               color: Colors.white,
                                             ),
                                           ),
-                                        ),
-                                        Text(
-                                          'Prix : ${gameData['price']}',
-                                          style: TextStyle(
-                                            fontSize: 12,
-                                            decoration: TextDecoration.underline,
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                      ],
+                                        ],
+                                      ),
                                     ),
                                     const Spacer(),
                                     ElevatedButton(
@@ -289,22 +303,19 @@ class _AllezPageState extends State<AllezPage> {
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                            builder: (context) =>
-                                                DescriptionPage(gameId: appIdbis),
+                                            builder: (context) => DescriptionPage(gameId: appIdbis),
                                           ),
                                         );
                                       },
                                       child: Padding(
-                                        padding:
-                                        const EdgeInsets.symmetric(vertical: 34),
+                                        padding: const EdgeInsets.symmetric(vertical: 34),
                                         child: Text(
                                           'En savoir \n plus',
                                           textAlign: TextAlign.center,
                                         ),
                                       ),
                                       style: ButtonStyle(
-                                        backgroundColor:
-                                        MaterialStateProperty.all<Color>(
+                                        backgroundColor: MaterialStateProperty.all<Color>(
                                           AppColors.buttonColor,
                                         ),
                                       ),
@@ -312,6 +323,7 @@ class _AllezPageState extends State<AllezPage> {
                                   ],
                                 ),
                               );
+
                             } else if (gameDataSnapshot.hasError) {
                               return Text('Une erreur est survenue : ${gameDataSnapshot.error}');
                             } else {
