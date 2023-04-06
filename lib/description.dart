@@ -19,6 +19,7 @@ class DescriptionPage extends StatefulWidget {
   final int gameId;
 
 
+
   const DescriptionPage({Key? key, required this.gameId}) : super(key: key);
 
   @override
@@ -30,6 +31,8 @@ class _DescriptionPageState extends State<DescriptionPage> {
   bool _whishlist = false;
   bool _showDescription = true;
   String _gameName = '';
+  String _lightBackground = '';
+
 
   Future<String> fetchDescription(int gameId) async {
     final response = await http.get(Uri.parse('https://store.steampowered.com/api/appdetails?appids=$gameId'));
@@ -37,6 +40,8 @@ class _DescriptionPageState extends State<DescriptionPage> {
     if (response.statusCode == 200) {
       final json = jsonDecode(response.body);
       final description = json['$gameId']['data']['short_description'];
+      final gameData = json["$gameId"]["data"];
+      final lightBackground = gameData["background_raw"];
       final gameDetailsResponse = await http.get(Uri.parse(
           'https://store.steampowered.com/api/appdetails?appids=$gameId&cc=us&l=fr'));
       if (gameDetailsResponse.statusCode == 200) {
@@ -44,6 +49,7 @@ class _DescriptionPageState extends State<DescriptionPage> {
         final gameName = gameDetailsJson['$gameId']['data']['name'];
         setState(() {
           _gameName = gameName;
+          _lightBackground = lightBackground;
         });
       }
       return description;
@@ -53,6 +59,8 @@ class _DescriptionPageState extends State<DescriptionPage> {
       throw Exception('Failed to load game description');
     }
   }
+
+
   String _description = '';
 
   @override
@@ -132,7 +140,7 @@ class _DescriptionPageState extends State<DescriptionPage> {
                     BlendMode.darken,
                   ),
                   child: Image.asset(
-                    'assets/images/warbackground.png',
+                    'assets/images/handgun.png',
                     fit: BoxFit.cover,
                     width: MediaQuery.of(context).size.width,
                   ),

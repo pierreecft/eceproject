@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 import 'description.dart';
 
 
+
 class AppColors {
   static const Color primaryColor = Color(0xFF1A2025);
   static const Color searchColor = Color(0xFF1E262C);
@@ -15,6 +16,7 @@ final TextEditingController _searchController = TextEditingController();
 class Game {
   final String name;
   final int appId;
+
 
   Game({required this.name, required this.appId});
 

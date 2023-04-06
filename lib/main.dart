@@ -2,6 +2,7 @@ import 'package:eceproject/login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'home.dart';
+import 'allez.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return const HomePage();
+            return const AllezPage();
           }
           else {
             return const LoginsPage();
