@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'search.dart';
@@ -86,10 +87,37 @@ class _DescriptionPageState extends State<DescriptionPage> {
     });
 
     if (_liked) {
+      FirebaseFirestore.instance.collection('likes').add({
+        'name': _gameName,
+        'price': _price,
+        'lightBackground': _lightBackground,
+        'developers': _developers,
+        'darkBackground': _darkBackground,
+      });
       // Navigate to likes page and pass the game name as an argument
       Navigator.pop(context, _gameName);
     } else {
       // Handle the case when the user unlikes the game
+    }
+  }
+
+  void _onWhishlistButtonPressed(){
+    setState(() {
+      _whishlist = !_whishlist;
+    });
+
+    if (_whishlist) {
+      FirebaseFirestore.instance.collection('whishlist').add({
+        'name': _gameName,
+        'price': _price,
+        'lightBackground': _lightBackground,
+        'developers': _developers,
+        'darkBackground': _darkBackground,
+      });
+      // Navigate to wishlist page and pass the game name as an argument
+      Navigator.pop(context, _gameName);
+    } else {
+      // Handle the case when the user unwhishes the game
     }
   }
 
@@ -121,11 +149,7 @@ class _DescriptionPageState extends State<DescriptionPage> {
                 ? SvgPicture.asset(
                 'assets/vector_drawables/whishlist_full.svg')
                 : SvgPicture.asset('assets/vector_drawables/whishlist.svg'),
-            onPressed: () {
-              setState(() {
-                _whishlist = !_whishlist;
-              });
-            },
+            onPressed: _onWhishlistButtonPressed,
           ),
         ],
       ),
